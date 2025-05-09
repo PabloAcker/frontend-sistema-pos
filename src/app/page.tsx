@@ -1,3 +1,4 @@
+/*
 import Image from "next/image";
 import styles from "./page.module.css";
 
@@ -90,6 +91,15 @@ export default function Home() {
           Go to nextjs.org →
         </a>
       </footer>
+    </div>
+  );
+}
+*/
+export default function Home() {
+  return (
+    <div className="p-10 bg-background text-foreground">
+      <h1 className="text-4xl font-bold">Sistema POS</h1>
+      <p className="mt-4 text-muted-foreground">Bienvenido al sistema de inventario.</p>
     </div>
   );
 }
