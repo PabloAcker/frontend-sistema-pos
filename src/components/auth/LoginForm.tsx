@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 
@@ -23,11 +23,9 @@ export default function LoginForm() {
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800">Bienvenido de nuevo!</h1>
           <div className="flex items-center justify-center mt-3 gap-4">
-            {/* Línea izquierda */}
-            <div className="h-px w-24 text-blue-600" />
-            <span className="text-sm text-gray-500">Inicia sesión</span>
-            {/* Línea derecha */}
-            <div className="h-px w-24 text-blue-600" />
+            <div className="h-px flex-1 bg-gray-300" />
+            <span className="text-sm text-gray-500 whitespace-nowrap">Inicia sesión</span>
+            <div className="h-px flex-1 bg-gray-300" />
           </div>
         </div>
 
@@ -36,37 +34,42 @@ export default function LoginForm() {
           {/* Email */}
           <div className="space-y-2">
             <Label htmlFor="email" className="text-gray-700">Correo electrónico</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="ejemplo@correo.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="h-12 text-sm w-full"
-            />
+            <div className="flex items-center border border-gray-300 rounded-md overflow-hidden h-12">
+              <div className="px-3 text-gray-500 h-full flex items-center justify-center">
+                <Mail size={22} />
+              </div>
+              <input
+                id="email"
+                type="email"
+                placeholder="ejemplo@correo.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="w-full h-full px-3 text-sm outline-none"
+              />
+            </div>
           </div>
 
-          {/* Contraseña */}
+          {/* Contraseña con ícono a la izquierda */}
           <div className="space-y-2">
             <Label htmlFor="password" className="text-gray-700">Contraseña</Label>
-            <div className="relative w-full">
-              <Input
+            <div className="flex items-center border border-gray-300 rounded-md overflow-hidden h-12">
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="px-3 text-gray-500 hover:bg-gray-100 h-full flex items-center justify-center"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+              <input
                 id="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="Ingresa tu contraseña"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                className="pr-12 h-12 text-sm w-full"
+                className="w-full h-full px-3 text-sm outline-none"
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-2 -translate-y-1/2 text-gray-500"
-              >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-              </button>
             </div>
           </div>
 
